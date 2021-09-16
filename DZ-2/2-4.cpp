@@ -54,12 +54,12 @@ int main()
 
         if (A > v[tmp])
         {
-            l = tmp + 1;
+            l = tmp;
         }
         else
         {
             if (A < v[tmp])
-                r = tmp - 1;
+                r = tmp;
             else
             {
                 cout << "Искомый элемент найден на позиции (нумерация с нуля):\n";
