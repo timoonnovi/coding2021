@@ -15,16 +15,22 @@ int main()
 
     setlocale(LC_ALL, "Russian");
 
-    cout << "Введите строку\n";
+    cout << "Введите строку:\n";
 
     getline(cin, str);
 
-    str += ' ';
+    cout << "\nВведите символ-разделитель:\n";
+
+    // символ-разделитель
+    char xyu;
+    cin >> xyu;
+
+    str += xyu;
 
     while (str.length() > 0)
     {
-        string tmp = str.substr(0, str.find(' '));
-        str.erase(0, str.find(' ') + 1);
+        string tmp = str.substr(0, str.find(xyu));
+        str.erase(0, str.find(xyu) + 1);
         ans.push_back(tmp);
     }
 
