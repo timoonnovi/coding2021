@@ -1,4 +1,4 @@
-// timo.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// timo.cpp : РџРµСЂРµРѕРїСЂРµРґРµР»РµРЅРёРµ РѕРїРµСЂР°С‚РѕСЂРѕРІ РІРІРѕРґР°/РІС‹РІРѕРґР° РґР»СЏ РІРµРєС‚РѕСЂР° С‚РёРїР° int.
 //
 
 #ifndef TIMO_CPP
@@ -9,7 +9,7 @@
 #include <string>
 #include <cstdio>
 
-// Переопределение оператора вывода для вектора типа int
+// ГЏГҐГ°ГҐГ®ГЇГ°ГҐГ¤ГҐГ«ГҐГ­ГЁГҐ Г®ГЇГҐГ°Г ГІГ®Г°Г  ГўГ»ГўГ®Г¤Г  Г¤Г«Гї ГўГҐГЄГІГ®Г°Г  ГІГЁГЇГ  int
 std::ostream& operator<<(std::ostream& ostr,
     const std::vector<int>& nums) 
 {
@@ -20,11 +20,11 @@ std::ostream& operator<<(std::ostream& ostr,
     return ostr;
 }
 
-// Переопределение оператора ввода для вектора типа int
+// ГЏГҐГ°ГҐГ®ГЇГ°ГҐГ¤ГҐГ«ГҐГ­ГЁГҐ Г®ГЇГҐГ°Г ГІГ®Г°Г  ГўГўГ®Г¤Г  Г¤Г«Гї ГўГҐГЄГІГ®Г°Г  ГІГЁГЇГ  int
 std::istream& operator>>(std::istream& istr, std::vector<int>& v) 
 {
     setlocale(LC_ALL, "Russian");
-    std::cout << "Введите вектор:\n";
+    std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГўГҐГЄГІГ®Г°:\n";
 
     std::string s;
     getline(std::cin, s);
@@ -42,15 +42,3 @@ std::istream& operator>>(std::istream& istr, std::vector<int>& v)
 }
 
 #endif // !TIMO_CPP
-
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
