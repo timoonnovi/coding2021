@@ -1,4 +1,4 @@
-﻿// timo.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// timo.cpp : Переопределение операторов ввода/вывода для вектора типа int.
 //
 
 #ifndef TIMO_CPP
