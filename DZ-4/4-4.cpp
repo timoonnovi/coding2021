@@ -41,7 +41,7 @@ int days_at_month(Months month)
     case Months::NOVEMBER:
         return 30;
         break;
-
+    }
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
