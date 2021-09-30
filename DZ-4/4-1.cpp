@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <vector>
 
 // Это вектор из линейной алгебры. 
@@ -7,6 +7,20 @@ struct Vector
 {
 	std::vector<double> components;
 	unsigned int dim;
+
+	// Функция расчёта модуля вектора.
+	double abs(const Vector& v)
+	{
+		double tmp = 0;
+		for (auto item : v.components)
+		{
+			tmp += pow(item, 2);
+		}
+
+		tmp = pow(tmp, 0.5);
+
+		return tmp;
+	}
 };
 
 // Вывод вектора. 
@@ -194,18 +208,4 @@ double scalar_multiply(const Vector& v1, const Vector& v2)
 	}
 
 	return result;
-}
-
-// Функция расчёта модуля вектора.
-double vector_abs(const Vector& v)
-{
-	double tmp = 0;
-	for (auto item : v.components)
-	{
-		tmp += pow(item, 2);
-	}
-
-	tmp = pow(tmp, 0.5);
-
-	return tmp;
 }
