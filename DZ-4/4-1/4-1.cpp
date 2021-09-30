@@ -14,7 +14,6 @@ int main()
 	std::cout << "Модуль вектора v:\n";
 	std::cout << v.abs() << '\n';
 	std::cout << "Обращённый вектор v:\n";
-	v = -v;
 	std::cout << -v;
 
 	int a;
