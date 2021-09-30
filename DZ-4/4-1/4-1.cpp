@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <vector>
 #include "Vector.h"
 
@@ -11,16 +11,16 @@ int main()
 	std::cout << "Введите вектор v:\n";
 	std::cin >> v;
 	std::cout << '\n';
-	std::cout << "Модуль вектора v:\n";
-	std::cout << v.abs() << '\n';
+	std::cout << "Модуль вектора v: ";
+	std::cout << v.abs() << "\n\n";
 	std::cout << "Обращённый вектор v:\n";
-	std::cout << -v;
+	std::cout << -v << '\n';
 
 	int a;
 
 	std::cout << "Введите число:\n";
 	std::cin >> a;
-	std::cout << "v * a = " << v * a << '\n';
+	std::cout << "\nv * a =\n" << v * a << '\n';
 	std::cout << "Введите второй вектор u:\n";
 	
 	Vector u;
