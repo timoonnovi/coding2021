@@ -9,13 +9,11 @@ private:
 	double* m_ptr;
 	bool isMemAllocated = false;
 public:
-	// Êîíñòðóêòîðû
 	SmartPtr() = default;
 	SmartPtr(double* ptr) : m_ptr(ptr) {}
 	SmartPtr(double);
 	SmartPtr(const SmartPtr& another) : m_ptr(another.m_ptr) {}
 
-	// Äåñòðóêòîð
 	~SmartPtr();
 
 	friend double& operator* (SmartPtr);
@@ -23,4 +21,3 @@ public:
 };
 
 #endif // SMART_PTR
-
