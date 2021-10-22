@@ -1,4 +1,4 @@
-п»ї#ifndef SMART_PTR
+#ifndef SMART_PTR
 #define SMART_PTR
 
 #include <iostream>
@@ -10,13 +10,23 @@ private:
 	double* m_ptr;
 	bool isMemAllocated = false;
 public:
-	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
+	// Конструкторы
 	SmartPtr() = default;
-	SmartPtr(double* ptr) : m_ptr(ptr) {}
+	SmartPtr(double* ptr);
 	SmartPtr(double);
-	SmartPtr(const SmartPtr& another) : m_ptr(std::move(another.m_ptr)) {}
+	SmartPtr(const SmartPtr& another)
+	{
+		m_ptr = new double;
+		isMemAllocated = true;
+		*m_ptr = *another.m_ptr;
+	}
+	SmartPtr(SmartPtr&& another) : m_ptr(another.m_ptr)
+	{
+		another.m_ptr = nullptr;
+		return;
+	}
 
-	// Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
+	// Деструктор
 	~SmartPtr();
 
 	friend double& operator* (SmartPtr);

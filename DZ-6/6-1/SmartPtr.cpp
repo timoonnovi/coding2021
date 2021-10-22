@@ -1,8 +1,16 @@
-﻿#include "SmartPtr.h"
+#include "SmartPtr.h"
 
 SmartPtr::SmartPtr(double var)
 {
 	m_ptr = new double{ var };
+	isMemAllocated = true;
+	return;
+}
+
+SmartPtr::SmartPtr(double* ptr)
+{
+	m_ptr = new double{ *ptr };
+	isMemAllocated = true;
 	return;
 }
 
