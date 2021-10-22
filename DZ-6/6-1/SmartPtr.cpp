@@ -1,4 +1,4 @@
-#include "SmartPtr.h"
+﻿#include "SmartPtr.h"
 
 SmartPtr::SmartPtr(double var)
 {

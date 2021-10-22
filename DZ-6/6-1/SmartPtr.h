@@ -1,4 +1,4 @@
-#ifndef SMART_PTR
+п»ї#ifndef SMART_PTR
 #define SMART_PTR
 
 #include <iostream>
@@ -10,7 +10,7 @@ private:
 	double* m_ptr;
 	bool isMemAllocated = false;
 public:
-	// Конструкторы
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 	SmartPtr() = default;
 	SmartPtr(double* ptr);
 	SmartPtr(double);
@@ -26,7 +26,7 @@ public:
 		return;
 	}
 
-	// Деструктор
+	// Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
 	~SmartPtr();
 
 	friend double& operator* (SmartPtr);
