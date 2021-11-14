@@ -1,4 +1,5 @@
 #include "Vector.h"
+#include <cmath>
 
 // Функция расчёта модуля вектора.
 template<typename T>
