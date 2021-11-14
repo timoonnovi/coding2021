@@ -1,6 +1,6 @@
 #include "Vector.h"
 
-// Функция расчёта модуля вектора.
+// Р¤СѓРЅРєС†РёСЏ СЂР°СЃС‡С‘С‚Р° РјРѕРґСѓР»СЏ РІРµРєС‚РѕСЂР°.
 template<typename T>
 double Vector<T>::abs()
 {
@@ -15,15 +15,15 @@ double Vector<T>::abs()
 	return tmp;
 }
 
-// Вывод вектора. 
-// Сначала размерность, затем компоненты.
+// Р’С‹РІРѕРґ РІРµРєС‚РѕСЂР°. 
+// РЎРЅР°С‡Р°Р»Р° СЂР°Р·РјРµСЂРЅРѕСЃС‚СЊ, Р·Р°С‚РµРј РєРѕРјРїРѕРЅРµРЅС‚С‹.
 template<typename T>
 std::ostream& operator<<(std::ostream& ostr,
 	const Vector<T>& vec)
 {
 	setlocale(LC_ALL, "Russian");
-	ostr << "Размерность вектора: " << vec.dim << '\n';
-	ostr << "Компоненты вектора:  ";
+	ostr << "Р Р°Р·РјРµСЂРЅРѕСЃС‚СЊ РІРµРєС‚РѕСЂР°: " << vec.dim << '\n';
+	ostr << "РљРѕРјРїРѕРЅРµРЅС‚С‹ РІРµРєС‚РѕСЂР°:  ";
 
 	for (auto i = 0u; i < vec.components.size(); i++) {
 		ostr << vec.components[i] << ' ';
@@ -32,15 +32,15 @@ std::ostream& operator<<(std::ostream& ostr,
 	return ostr;
 }
 
-// Ввод вектора.
-// Сначала размерность, затем компоненты.
+// Р’РІРѕРґ РІРµРєС‚РѕСЂР°.
+// РЎРЅР°С‡Р°Р»Р° СЂР°Р·РјРµСЂРЅРѕСЃС‚СЊ, Р·Р°С‚РµРј РєРѕРјРїРѕРЅРµРЅС‚С‹.
 template<typename T>
 std::istream& operator>>(std::istream& istr, Vector<T>& v)
 {
 	setlocale(LC_ALL, "Russian");
-	std::cout << "Введите размерность вектора: ";
+	std::cout << "Р’РІРµРґРёС‚Рµ СЂР°Р·РјРµСЂРЅРѕСЃС‚СЊ РІРµРєС‚РѕСЂР°: ";
 	istr >> v.dim;
-	std::cout << "Введите компоненты вектора:  ";
+	std::cout << "Р’РІРµРґРёС‚Рµ РєРѕРјРїРѕРЅРµРЅС‚С‹ РІРµРєС‚РѕСЂР°:  ";
 
 	for (unsigned int i = 0u; i < v.dim; i++)
 	{
@@ -54,11 +54,11 @@ std::istream& operator>>(std::istream& istr, Vector<T>& v)
 	return istr;
 }
 
-// Умножение вектора на число.
+// РЈРјРЅРѕР¶РµРЅРёРµ РІРµРєС‚РѕСЂР° РЅР° С‡РёСЃР»Рѕ.
 template<typename T>
 Vector<T> operator*(const Vector<T>& v, const T& num)
 {
-	Vector tmp;
+	Vector<T> tmp;
 	tmp.dim = v.dim;
 	for (auto item : v.components)
 	{
@@ -68,7 +68,7 @@ Vector<T> operator*(const Vector<T>& v, const T& num)
 	return tmp;
 }
 
-// Умножение вектора на число.
+// РЈРјРЅРѕР¶РµРЅРёРµ РІРµРєС‚РѕСЂР° РЅР° С‡РёСЃР»Рѕ.
 template<typename T>
 Vector<T>& operator*=(Vector<T>& v, const T& num)
 {
@@ -80,11 +80,11 @@ Vector<T>& operator*=(Vector<T>& v, const T& num)
 	return v;
 }
 
-// Умножение числа на вектор.
+// РЈРјРЅРѕР¶РµРЅРёРµ С‡РёСЃР»Р° РЅР° РІРµРєС‚РѕСЂ.
 template<typename T>
 Vector<T> operator*(const T& num, const Vector<T>& v)
 {
-	Vector tmp;
+	Vector<T> tmp;
 	tmp.dim = v.dim;
 	for (auto item : v.components)
 	{
@@ -94,19 +94,19 @@ Vector<T> operator*(const T& num, const Vector<T>& v)
 	return tmp;
 }
 
-// Сложение векторов.
+// РЎР»РѕР¶РµРЅРёРµ РІРµРєС‚РѕСЂРѕРІ.
 template<typename T>
 Vector<T> operator+(const Vector<T>& v1, const Vector<T>& v2)
 {
 	if (v1.dim != v2.dim)
 	{
 		setlocale(LC_ALL, "Russian");
-		std::cout << "Ошибка: невозможно сложить векторы разных размерностей.\n";
-		Vector tmp;
+		std::cout << "РћС€РёР±РєР°: РЅРµРІРѕР·РјРѕР¶РЅРѕ СЃР»РѕР¶РёС‚СЊ РІРµРєС‚РѕСЂС‹ СЂР°Р·РЅС‹С… СЂР°Р·РјРµСЂРЅРѕСЃС‚РµР№.\n";
+		Vector<T> tmp;
 		return tmp;
 	}
 
-	Vector tmp;
+	Vector<T> tmp;
 	tmp.dim = v1.dim;
 
 	for (unsigned int i = 0u; i < v1.dim; i++)
@@ -117,15 +117,15 @@ Vector<T> operator+(const Vector<T>& v1, const Vector<T>& v2)
 	return tmp;
 }
 
-// Тоже сложение векторов.
+// РўРѕР¶Рµ СЃР»РѕР¶РµРЅРёРµ РІРµРєС‚РѕСЂРѕРІ.
 template<typename T>
 Vector<T>& operator+=(Vector<T>& v1, const Vector<T>& v2)
 {
 	if (v1.dim != v2.dim)
 	{
 		setlocale(LC_ALL, "Russian");
-		std::cout << "Ошибка: невозможно сложить векторы разных размерностей.\n";
-		Vector tmp;
+		std::cout << "РћС€РёР±РєР°: РЅРµРІРѕР·РјРѕР¶РЅРѕ СЃР»РѕР¶РёС‚СЊ РІРµРєС‚РѕСЂС‹ СЂР°Р·РЅС‹С… СЂР°Р·РјРµСЂРЅРѕСЃС‚РµР№.\n";
+		Vector<T> tmp;
 		return tmp;
 	}
 
@@ -137,19 +137,19 @@ Vector<T>& operator+=(Vector<T>& v1, const Vector<T>& v2)
 	return v1;
 }
 
-// Вычитание векторов.
+// Р’С‹С‡РёС‚Р°РЅРёРµ РІРµРєС‚РѕСЂРѕРІ.
 template<typename T>
 Vector<T> operator-(const Vector<T>& v1, const Vector<T>& v2)
 {
 	if (v1.dim != v2.dim)
 	{
 		setlocale(LC_ALL, "Russian");
-		std::cout << "Ошибка: невозможно сложить векторы разных размерностей.\n";
-		Vector tmp;
+		std::cout << "РћС€РёР±РєР°: РЅРµРІРѕР·РјРѕР¶РЅРѕ СЃР»РѕР¶РёС‚СЊ РІРµРєС‚РѕСЂС‹ СЂР°Р·РЅС‹С… СЂР°Р·РјРµСЂРЅРѕСЃС‚РµР№.\n";
+		Vector<T> tmp;
 		return tmp;
 	}
 
-	Vector tmp;
+	Vector<T> tmp;
 	tmp.dim = v1.dim;
 
 	for (unsigned int i = 0u; i < v1.dim; i++)
@@ -160,15 +160,15 @@ Vector<T> operator-(const Vector<T>& v1, const Vector<T>& v2)
 	return tmp;
 }
 
-// Тоже вычитание векторов.
+// РўРѕР¶Рµ РІС‹С‡РёС‚Р°РЅРёРµ РІРµРєС‚РѕСЂРѕРІ.
 template<typename T>
 Vector<T>& operator-=(Vector<T>& v1, const Vector<T>& v2)
 {
 	if (v1.dim != v2.dim)
 	{
 		setlocale(LC_ALL, "Russian");
-		std::cout << "Ошибка: невозможно сложить векторы разных размерностей.\n";
-		Vector tmp;
+		std::cout << "РћС€РёР±РєР°: РЅРµРІРѕР·РјРѕР¶РЅРѕ СЃР»РѕР¶РёС‚СЊ РІРµРєС‚РѕСЂС‹ СЂР°Р·РЅС‹С… СЂР°Р·РјРµСЂРЅРѕСЃС‚РµР№.\n";
+		Vector<T> tmp;
 		return tmp;
 	}
 
@@ -180,7 +180,7 @@ Vector<T>& operator-=(Vector<T>& v1, const Vector<T>& v2)
 	return v1;
 }
 
-// Обращение вектора. В язычество. Во славу Сварога.
+// РћР±СЂР°С‰РµРЅРёРµ РІРµРєС‚РѕСЂР°. Р’ СЏР·С‹С‡РµСЃС‚РІРѕ. Р’Рѕ СЃР»Р°РІСѓ РЎРІР°СЂРѕРіР°.
 template<typename T>
 Vector<T>& operator-(Vector<T>& v)
 {
@@ -192,14 +192,14 @@ Vector<T>& operator-(Vector<T>& v)
 	return v;
 }
 
-// Функция скалярного произведения векторов.
+// Р¤СѓРЅРєС†РёСЏ СЃРєР°Р»СЏСЂРЅРѕРіРѕ РїСЂРѕРёР·РІРµРґРµРЅРёСЏ РІРµРєС‚РѕСЂРѕРІ.
 template<typename T>
 T scalar(const Vector<T>& v1, const Vector<T>& v2)
 {
 	if (v1.dim != v2.dim)
 	{
 		setlocale(LC_ALL, "Russian");
-		std::cout << "Ошибка: невозможно получить скалярное произведение векторов разной размерности.";
+		std::cout << "РћС€РёР±РєР°: РЅРµРІРѕР·РјРѕР¶РЅРѕ РїРѕР»СѓС‡РёС‚СЊ СЃРєР°Р»СЏСЂРЅРѕРµ РїСЂРѕРёР·РІРµРґРµРЅРёРµ РІРµРєС‚РѕСЂРѕРІ СЂР°Р·РЅРѕР№ СЂР°Р·РјРµСЂРЅРѕСЃС‚Рё.";
 		return -228;
 	}
 
