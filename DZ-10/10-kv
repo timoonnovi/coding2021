@@ -1,8 +1,15 @@
 1) Вариативный шаблон – это шаблон с заранее неизвестным числом аргументов, которые формируют один или несколько пакетов параметров.
+
 2) С помощью выражений свёртки.
-3) Для template<typename... Types> можно использовать sizeof...(Types).
+
+3) template<typename... Types>
+	 auto get_amount_of_arguments(Types... arguments) {
+   		return sizeof...(arguments);
+	 }
+	 
 4) (op ... pack), (pack op ...), (init op ... op pack), (pack op ... op init).
    Здесь op – почти любой бинарный оператор (за некоторыми исключениями).
+	 
 5) Статический полиморфизм = полиморфизм времени компиляции, например так:
    template<typename T>
    void process(T t)
