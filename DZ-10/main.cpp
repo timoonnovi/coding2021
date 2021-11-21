@@ -1,47 +1,47 @@
 #include <iostream>
 #include <vector>
 
-// Вариативные шаблоны -- принимают в себя неопределённое количество параметров
-// Пакет параметров шаблона
-// Выражения свёртки -- позволяют применять бинарные операторы к элементам пакета
-// 1) ... OPERATOR args <=> ((arg1 OPERATOR arg2) OPERATOR arg3) OPERATOR arg4 и так далее
+// Г‚Г Г°ГЁГ ГІГЁГўГ­Г»ГҐ ГёГ ГЎГ«Г®Г­Г» -- ГЇГ°ГЁГ­ГЁГ¬Г ГѕГІ Гў Г±ГҐГЎГї Г­ГҐГ®ГЇГ°ГҐГ¤ГҐГ«ВёГ­Г­Г®ГҐ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЇГ Г°Г Г¬ГҐГІГ°Г®Гў
+// ГЏГ ГЄГҐГІ ГЇГ Г°Г Г¬ГҐГІГ°Г®Гў ГёГ ГЎГ«Г®Г­Г 
+// Г‚Г»Г°Г Г¦ГҐГ­ГЁГї Г±ГўВёГ°ГІГЄГЁ -- ГЇГ®Г§ГўГ®Г«ГїГѕГІ ГЇГ°ГЁГ¬ГҐГ­ГїГІГј ГЎГЁГ­Г Г°Г­Г»ГҐ Г®ГЇГҐГ°Г ГІГ®Г°Г» ГЄ ГЅГ«ГҐГ¬ГҐГ­ГІГ Г¬ ГЇГ ГЄГҐГІГ 
+// 1) ... OPERATOR args <=> ((arg1 OPERATOR arg2) OPERATOR arg3) OPERATOR arg4 ГЁ ГІГ ГЄ Г¤Г Г«ГҐГҐ
 // 2) args OPERATOR ... <=> arg1 OPERATOR (arg2 OPERATOR (arg3 OPERATOR arg4))
 // 3) special_arg OPERATOR ... OPERATOR args <=> ((special_arg OPERATOR arg1) OPERATOR arg2) OPERATOR arg3
 // 4) args OPERATOR ... OPERATOR special_arg <=> arg1 OPERATOR (arg2 OPERATOR (arg3 OPERATOR special_arg))
 
-// Статический и динамический полиморфизм
-// Через классическое наследование -- динамический полиморфизм
+// Г‘ГІГ ГІГЁГ·ГҐГ±ГЄГЁГ© ГЁ Г¤ГЁГ­Г Г¬ГЁГ·ГҐГ±ГЄГЁГ© ГЇГ®Г«ГЁГ¬Г®Г°ГґГЁГ§Г¬
+// Г—ГҐГ°ГҐГ§ ГЄГ«Г Г±Г±ГЁГ·ГҐГ±ГЄГ®ГҐ Г­Г Г±Г«ГҐГ¤Г®ГўГ Г­ГЁГҐ -- Г¤ГЁГ­Г Г¬ГЁГ·ГҐГ±ГЄГЁГ© ГЇГ®Г«ГЁГ¬Г®Г°ГґГЁГ§Г¬
 // perimeter, area, info -- virtual
-// Через шаблоны -- статический полиморфизм
+// Г—ГҐГ°ГҐГ§ ГёГ ГЎГ«Г®Г­Г» -- Г±ГІГ ГІГЁГ·ГҐГ±ГЄГЁГ© ГЇГ®Г«ГЁГ¬Г®Г°ГґГЁГ§Г¬
 
-// Статический п-м
+// Г‘ГІГ ГІГЁГ·ГҐГ±ГЄГЁГ© ГЇ-Г¬
 template<typename Figure>
 auto perimeter(Figure& figure) {
     return figure.perimeter();
 }
 
-// Первая реализация функции print через рекурсивную генерацию
-// Функция -- условие остановки рекурсии
+// ГЏГҐГ°ГўГ Гї Г°ГҐГ Г«ГЁГ§Г Г¶ГЁГї ГґГіГ­ГЄГ¶ГЁГЁ print Г·ГҐГ°ГҐГ§ Г°ГҐГЄГіГ°Г±ГЁГўГ­ГіГѕ ГЈГҐГ­ГҐГ°Г Г¶ГЁГѕ
+// Г”ГіГ­ГЄГ¶ГЁГї -- ГіГ±Г«Г®ГўГЁГҐ Г®Г±ГІГ Г­Г®ГўГЄГЁ Г°ГҐГЄГіГ°Г±ГЁГЁ
 template<typename T>
 void print_first_realization(T first_argument) {
     std::cout << first_argument << ' ';
 }
 
-// Первая реализация функции print через рекурсивную генерацию
-// Основная функция
+// ГЏГҐГ°ГўГ Гї Г°ГҐГ Г«ГЁГ§Г Г¶ГЁГї ГґГіГ­ГЄГ¶ГЁГЁ print Г·ГҐГ°ГҐГ§ Г°ГҐГЄГіГ°Г±ГЁГўГ­ГіГѕ ГЈГҐГ­ГҐГ°Г Г¶ГЁГѕ
+// ГЋГ±Г­Г®ГўГ­Г Гї ГґГіГ­ГЄГ¶ГЁГї
 template<typename T, typename... Types>
 void print_first_realization(T first_argument, Types... arguments) {
     print_first_realization(first_argument);
     print_first_realization(arguments...);
 }
 
-// Функция, возвращающая количество аргументов в пакете
+// Г”ГіГ­ГЄГ¶ГЁГї, ГўГ®Г§ГўГ°Г Г№Г ГѕГ№Г Гї ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г Г°ГЈГіГ¬ГҐГ­ГІГ®Гў Гў ГЇГ ГЄГҐГІГҐ
 template<typename... Types>
 auto get_amount_of_arguments(Types... arguments) {
     return sizeof...(arguments);
 }
 
-// Вторая реализация print -- через if constexpr
+// Г‚ГІГ®Г°Г Гї Г°ГҐГ Г«ГЁГ§Г Г¶ГЁГї print -- Г·ГҐГ°ГҐГ§ if constexpr
 template<typename T, typename... Types>
 void print_second_realization(T first_argument, Types... arguments) {
     std::cout << first_argument << ' ';
@@ -50,21 +50,21 @@ void print_second_realization(T first_argument, Types... arguments) {
     }
 }
 
-// Функция суммы всех аргументов через выражение свёртки
+// Г”ГіГ­ГЄГ¶ГЁГї Г±ГіГ¬Г¬Г» ГўГ±ГҐГµ Г Г°ГЈГіГ¬ГҐГ­ГІГ®Гў Г·ГҐГ°ГҐГ§ ГўГ»Г°Г Г¦ГҐГ­ГЁГҐ Г±ГўВёГ°ГІГЄГЁ
 template <typename... Types>
 auto sum(Types... arguments) {
     auto result = (arguments + ...);
     return result;
 }
 
-// Функция поочерёдного деления через выражение свёртки
+// Г”ГіГ­ГЄГ¶ГЁГї ГЇГ®Г®Г·ГҐГ°ВёГ¤Г­Г®ГЈГ® Г¤ГҐГ«ГҐГ­ГЁГї Г·ГҐГ°ГҐГ§ ГўГ»Г°Г Г¦ГҐГ­ГЁГҐ Г±ГўВёГ°ГІГЄГЁ
 template <typename... Types>
 auto divide(Types... arguments) {
 //    return (... / arguments);
     return (arguments / ...);
 }
 
-// Класс, добавляющий разделитель для третьей реализации print
+// ГЉГ«Г Г±Г±, Г¤Г®ГЎГ ГўГ«ГїГѕГ№ГЁГ© Г°Г Г§Г¤ГҐГ«ГЁГІГҐГ«Гј Г¤Г«Гї ГІГ°ГҐГІГјГҐГ© Г°ГҐГ Г«ГЁГ§Г Г¶ГЁГЁ print
 template<typename T>
 class SeparatorAdder {
 public:
@@ -78,13 +78,13 @@ private:
     T& argument;
 };
 
-// Третья реализация функции print через выражение свёртки
+// Г’Г°ГҐГІГјГї Г°ГҐГ Г«ГЁГ§Г Г¶ГЁГї ГґГіГ­ГЄГ¶ГЁГЁ print Г·ГҐГ°ГҐГ§ ГўГ»Г°Г Г¦ГҐГ­ГЁГҐ Г±ГўВёГ°ГІГЄГЁ
 template<typename... Types>
 void print(Types... arguments) {
     (std::cout << ... << SeparatorAdder(arguments));
 }
 
-// Функция получения i-го аргумента
+// Г”ГіГ­ГЄГ¶ГЁГї ГЇГ®Г«ГіГ·ГҐГ­ГЁГї i-ГЈГ® Г Г°ГЈГіГ¬ГҐГ­ГІГ 
 template <size_t needed_index, typename T, typename... Types>
 auto get(T first_argument, Types... arguments) {
     if constexpr(needed_index == 0) {
@@ -94,7 +94,7 @@ auto get(T first_argument, Types... arguments) {
     }
 }
 
-// Определение шаблонной функции вывода вектора
+// ГЋГЇГ°ГҐГ¤ГҐГ«ГҐГ­ГЁГҐ ГёГ ГЎГ«Г®Г­Г­Г®Г© ГґГіГ­ГЄГ¶ГЁГЁ ГўГ»ГўГ®Г¤Г  ГўГҐГЄГІГ®Г°Г 
 template <typename Element>
 std::ostream& operator<<(std::ostream& ostr, const std::vector<Element>& elements) {
     for(const auto& item: elements) {
@@ -104,22 +104,22 @@ std::ostream& operator<<(std::ostream& ostr, const std::vector<Element>& element
 }
 
 // CRTP -- curiosly recurring template pattern
-// Функционал, аналогичный наследованию, но без его минусов
+// Г”ГіГ­ГЄГ¶ГЁГ®Г­Г Г«, Г Г­Г Г«Г®ГЈГЁГ·Г­Г»Г© Г­Г Г±Г«ГҐГ¤Г®ГўГ Г­ГЁГѕ, Г­Г® ГЎГҐГ§ ГҐГЈГ® Г¬ГЁГ­ГіГ±Г®Гў
 
-// Базовый класс -- в качестве шаблона принимает производный
+// ГЃГ Г§Г®ГўГ»Г© ГЄГ«Г Г±Г± -- Гў ГЄГ Г·ГҐГ±ГІГўГҐ ГёГ ГЎГ«Г®Г­Г  ГЇГ°ГЁГ­ГЁГ¬Г ГҐГІ ГЇГ°Г®ГЁГ§ГўГ®Г¤Г­Г»Г©
 template <typename DerivedClass>
 class Base {
 public:
     auto virtual_function_analog() {
-        // Вызов функции производного класса с помощью
-        // каста this к указателю на производный класс
+        // Г‚Г»Г§Г®Гў ГґГіГ­ГЄГ¶ГЁГЁ ГЇГ°Г®ГЁГ§ГўГ®Г¤Г­Г®ГЈГ® ГЄГ«Г Г±Г±Г  Г± ГЇГ®Г¬Г®Г№ГјГѕ
+        // ГЄГ Г±ГІГ  this ГЄ ГіГЄГ Г§Г ГІГҐГ«Гѕ Г­Г  ГЇГ°Г®ГЁГ§ГўГ®Г¤Г­Г»Г© ГЄГ«Г Г±Г±
 
         static_cast<DerivedClass*>(this)->virtual_function_analog();
     }
 };
 
-// Производный класс -- указывает себя как параметр шаблона
-// базового при наследовании от него
+// ГЏГ°Г®ГЁГ§ГўГ®Г¤Г­Г»Г© ГЄГ«Г Г±Г± -- ГіГЄГ Г§Г»ГўГ ГҐГІ Г±ГҐГЎГї ГЄГ ГЄ ГЇГ Г°Г Г¬ГҐГІГ° ГёГ ГЎГ«Г®Г­Г 
+// ГЎГ Г§Г®ГўГ®ГЈГ® ГЇГ°ГЁ Г­Г Г±Г«ГҐГ¤Г®ГўГ Г­ГЁГЁ Г®ГІ Г­ГҐГЈГ®
 
 class Derived : public Base<Derived> {
 public:
