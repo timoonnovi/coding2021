@@ -6,31 +6,36 @@
 int size_in_bytes_1 = 0;
 
 template<typename T>
-void func1(T arg)
+void Size1(T arg)
 {
     size_in_bytes_1 += sizeof(arg);
     return;
 }
 
 template<typename T, typename ... Types>
-void func1(T firstArg, Types... args)
+void Size1(T firstArg, Types... args)
 {
-    func1(firstArg);
-    func1(args...);
+    Size1(firstArg);
+    Size1(args...);
     return;
 }
 
-int size_in_bytes_2;
+int size_in_bytes_2 = 0;
 
 template<typename ... Types>
-void func2(Types... args)
+auto Size2(Types... args)
 {
     return (... + sizeof(args));
 }
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    int a = 1, b = 2, c = 5;
+    Size1<int, int, int>(a, b, c);
+    size_in_bytes_2 = Size2<int, int, int>(a, b, c);
+    std::cout << "First method:  " << size_in_bytes_1 << " bytes." << '\n';
+    std::cout << "Second method: " << size_in_bytes_2 << " bytes." << '\n';
+    return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
