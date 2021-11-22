@@ -3,20 +3,30 @@
 
 #include <iostream>
 
-template<typename... Types>
-void func1(Types ... args)
+template<typename RT, typename... Types>
+RT func1(Types ... args)
 {
+    RT tmp = (args + ...);
+    return tmp;
 }
 
-template<typename... Types>
-void func2(Types ... args, void (*func1)(Types...args))
+template<typename RT, typename... Types>
+void func2(RT f, Types ... args)
 {
-    func1(args...);
+    std::cout << f(args...);
+}
+
+int func3(int a, int b)
+{
+    std::cout << a + b;
+    return a + b;
 }
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    int a = 10;
+    int b = 20;
+    func2<int (*)(int, int), int, int>(func1<int, int>, a, b);
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
