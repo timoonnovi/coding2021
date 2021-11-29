@@ -15,12 +15,23 @@ constexpr bool isPrime(unsigned int p)
 	return (p > 1); // Такого делителя нет
 }
 
+constexpr int N_prime(int n)
+{
+	int count = 0;
+	unsigned int tmp = 1u;
+	while (count < n)
+	{
+		tmp++;
+		if (isPrime(tmp)) count++;
+	}
+	return tmp;
+}
+
 int main()
 {
-	constexpr bool prime_5 = isPrime(5);
-	std::cout << "Is 5 prime? " <<  prime_5 << '\n';
-	constexpr bool prime_16 = isPrime(16);
-	std::cout << "Is 16 prime? " << prime_16 << '\n';
+	constexpr int N = 10;
+	constexpr int num = N_prime(N);
+	std::cout << "10th prime: " << num << '\n';
 	return 0;
 }
 
